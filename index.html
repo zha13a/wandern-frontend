@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.cdnfonts.com/css/exo-2" rel="stylesheet">
+  <script src="main.js" type="module"></script>
+  <title>Dashboard</title>
+</head>
+<body>
+  <div id="root">
+    <h1>Dashboard</h1>
+    <h2>All information about deployed services</h2>
+    <div class="services-table default-grid" id="services-table"></div>
+  </div>
+  <div class="modal">
+    <div class="modal__card">
+      <button class="modal__close-btn">x</button>
+      <div class="modal__header">Are you sure you want to turn off this service?</div>
+      <div class="modal__service-name">ApiGWApplication</div>
+      <button class="modal__accept-btn" id="turn-off-btn">YES, TURN OFF</button>
+    </div>
+  </div>
+</body>
+
+<template id="header-template">
+  <div class="services-table__header-cell">System</div>
+  <div class="services-table__header-cell">Deployment Information</div>
+  <div class="services-table__header-cell">Service Info</div>
+  <div class="services-table__header-cell">Status</div>
+  <div class="services-table__header-cell">System Load</div>
+  <div class="services-table__header-cell">JVM CPU Load</div>
+  <div class="services-table__header-cell">Memory</div>
+</template>
+
+<template id="service-template">
+  <div class="services-table__cell" id="system"></div>
+  <div class="services-table__cell" id="deployment-info">
+    <div>
+      <span class="cell-label">ID: </span><span id="deployment-id"></span>
+    </div>
+    <div>
+      <span class="cell-label">Unit: </span><span id="deployment-unit"></span>
+    </div>
+  </div>
+  <div class="services-table__cell" id="service-info">
+    <div>
+      <span class="cell-label">URL: </span><span id="service-url"></span>
+    </div>
+    <div>
+      <span class="cell-label">Context Path: </span><span id="service-path"></span>
+    </div>
+    <div>
+      <span class="cell-label">Port: </span><span id="service-port"></span>
+    </div>
+    <div>
+      <span class="cell-label">IP Address: </span><span id="service-address"></span>
+    </div>
+  </div>
+  <div class="services-table__cell" id="status-cell" >
+    <div class="status-badge" id="status"></div>
+  </div>
+  <div class="services-table__cell" id="system-load">
+    <span class="cell-label"></span>
+    <svg class="progress-ring" width="70" height="70">
+      <circle class="progress-ring__bg-circle" cx="35" cy="35" r="30" stroke-width="10"></circle>
+      <circle class="progress-ring__circle" id="system-load-circle" cx="35" cy="35" r="30" stroke-width="10"></circle>
+    </svg>
+  </div>
+  <div class="services-table__cell" id="jvm-cpu-load">
+    <span class="cell-label"></span>
+    <svg class="progress-ring" width="70" height="70">
+      <circle class="progress-ring__bg-circle" cx="35" cy="35" r="30" stroke-width="10"></circle>
+      <circle class="progress-ring__circle" id="jvm-load-circle" cx="35" cy="35" r="30" stroke-width="10"></circle>
+    </svg>
+  </div>
+  <div class="services-table__cell" id="memory"></div>
+</template>
+
+<template id="error-template">
+  <div class="error">
+    <div class="error__title"></div>
+    <span class="error__message"></span>
+  </div>
+</template>
+
+<template id="loader-template">
+  <div class="loader">
+    <div class="lds-ellipsis loader loader_hidden"><div></div><div></div><div></div><div></div></div>
+  </div>
+</template>
+</html>
+

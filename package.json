@@ -1,0 +1,12 @@
+{
+  "name": "wandern-frontend",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "https://github.com/zha13a/wandern-frontend.git",
+  "author": "Sergey Suvorov <suvorovsergey99@gmail.com>",
+  "license": "none",
+  "private": false,
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  }
+}
