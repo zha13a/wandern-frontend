@@ -74,6 +74,7 @@ function showError(error) {
 
 function toggleModal() {
   const modal = document.querySelector('.modal');
+  modal.querySelector('.modal__service-name').textContent = selectedServiceID;
   modal.classList.toggle('modal_visible');
 }
 
