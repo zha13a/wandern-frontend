@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 import Table from "../../Components/Table/Table.js";
 import "./Nodes.css";
@@ -32,15 +33,17 @@ const rowsData = [
 ];
 
 const Nodes = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="nodes">
       <h1>Nodes Dashboard</h1>
       <span>Information about nodes</span>
 
       <Table colsCount={4} headers={["Node ID", "IP", "Last Check Time", "Services"]}>
-        {rowsData.map((row, index) => (
+        {rowsData.map(row => (
           <>
-            <div className="table__cell node-id">{row.id}</div>
+            <div className="table__cell node-id" onClick={() => {navigate(`/node/${row.id}`)}}>{row.id}</div>
             <div className="table__cell">{row.nodeIp}</div>
             <div className="table__cell last-check">{moment(row.timestamp).fromNow()}</div>
             <div className="table__cell services">

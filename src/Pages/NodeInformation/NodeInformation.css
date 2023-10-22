@@ -1,0 +1,46 @@
+.node-information {
+  padding: var(--default-padding);
+}
+
+.node-information__title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.node-data {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.node-data__item {
+  padding-right: 25px;
+}
+
+.node-data__item:not(:last-child) {
+  border-right: solid 1px white;
+}
+
+.node-data__label {
+  font-weight: bold;
+}
+
+.node-data__bar {
+ margin-right: 7px;
+}
+
+.node-data__bar-data {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.node-data__bar-label {
+  font-weight: bold;
+}
+
+.node-information__services-count {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 40px;
+}
