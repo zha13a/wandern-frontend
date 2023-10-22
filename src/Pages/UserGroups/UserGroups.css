@@ -1,0 +1,120 @@
+.page-title {
+  padding: var(--default-padding);
+}
+
+.container {
+  /* display: flex;
+  align-items: start;
+  justify-content: start; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  padding: 0 var(--default-padding);
+}
+
+.user-groups {
+  grid-area: 1 / 1 / 2 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--table-color);
+  border-radius: var(--default-border-radius);
+  border: var(--default-border);
+  min-width: 350px;
+  margin-right: 15px;
+  height: fit-content;
+}
+
+.user-groups__group {
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-groups__group:not(:last-of-type) {
+  border-bottom: var(--default-border);
+}
+
+.user-groups__group:hover {
+  background-color: var(--border-color);
+}
+
+.user-groups__group_selected {
+  cursor: unset;
+  background-color: var(--border-color);
+}
+
+.table__user-groups {
+  grid-area: 1 / 3 / 3 / 6;
+  height: fit-content;
+  margin: 0;
+  min-width: 500px;
+  width: 100%;
+}
+
+.user-groups__actions {
+  grid-area: 2 / 1 / 3 / 3;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.user-groups__action {
+  background-color: var(--table-color);
+  border-radius: var(--default-border-radius);
+  border: var(--default-border);
+
+  min-height: 50px;
+  margin: 15px 15px 0 0;
+  font-weight: 800;
+}
+
+.user-groups__action:hover {
+  cursor: pointer;
+  background-color: var(--border-color);
+}
+
+.create-group-modal__nodes {
+  grid-area: 2 / 1 / 3 / 2; 
+  border-radius: var(--default-border-radius);
+  border: var(--default-border);
+  margin: 10px;
+  height: fit-content;
+}
+
+.create-group-modal__nodes:empty { 
+  border: none;
+}
+
+.create-group-modal__selected-nodes {
+  grid-area: 2 / 2 / 3 / 3;
+  border-radius: var(--default-border-radius);
+  border: var(--default-border);
+  margin: 10px;
+  height: fit-content;
+}
+
+.create-group-modal__selected-nodes:empty {
+  border: none;
+}
+
+.create-group-modal__nodes-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  width: 100%;
+  margin: 15px;
+}
+
+.create-group-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

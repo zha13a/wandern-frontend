@@ -170,7 +170,7 @@ const NodeInformation = () => {
         </Table>
         <Modal isOpen={isOpen} toggleFunction={toggleModal}>
           <div className="modal__header">Are you sure you want to turn off this service?</div>
-          <div className="modal__service-name">ApiGWApplication</div>
+          <div className="modal__service-name">{selectedServiceID}</div>
           <button className="modal__accept-btn" onClick={() => {turnOffService(selectedServiceID); toggleModal()}}>YES, TURN OFF</button>
         </Modal>
     </div>

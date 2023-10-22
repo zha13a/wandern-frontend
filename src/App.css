@@ -24,6 +24,14 @@
   transition: all 0.2s ease-in-out;
 }
 
+input[type=text] {   
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
 /* https://stackoverflow.com/a/45890842 */
 button, input[type="submit"], input[type="reset"] {
 	background: none;

@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home.js";
 import Nodes from "./Pages/Nodes/Nodes.js";
 import NodeInformation from "./Pages/NodeInformation/NodeInformation.js";
 import Services from "./Pages/Services/Services.js";
+import UserGroups from "./Pages/UserGroups/UserGroups.js";
 
 import "./App.css";
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/services",
     element: <Services />
+  },
+  {
+    path: "/groups",
+    element: <UserGroups />
   }
 ]);
 
