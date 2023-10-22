@@ -1,0 +1,92 @@
+.table {
+  max-width: 1440px;
+  margin-top: 30px;
+  background-color: var(--table-color);
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+}
+
+.default-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.table__header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 20px 0 20px 20px;
+  border-bottom: var(--default-border);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table__cell {
+  position: relative;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.services-table__row:not(:last-of-type) {
+  border-bottom: var(--default-border);
+}
+
+.services-table__cell {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+}
+
+.cell-label {
+  font-weight: 600;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+  min-width: 50px;
+  height: 35px;
+  padding: 0 5px;
+  border-radius: var(--default-border-radius);
+  color: var(--table-color);
+  cursor: pointer;
+}
+
+.status-badge[status="UP"] {
+  background-color: var(--default-green);
+}
+
+.status-badge[status="DOWN"] {
+  pointer-events: none;
+  background-color: var(--default-red);
+  cursor: not-allowed;
+}
+
+.status-badge[status="DOWN"]:hover {
+  filter: unset;
+}
+
+/* 
+.status-badge[status="UNKNOWN"] {
+  background-color: var(--default-yellow);
+} */
+
+.status-badge:hover {
+  filter: brightness(1.2);
+}
+
+.status-cell {
+  display: flex;
+  flex-direction: unset;
+  align-items: center;
+  justify-content: center;
+}

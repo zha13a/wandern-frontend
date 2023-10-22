@@ -1,0 +1,26 @@
+.nodes {
+  padding: var(--default-padding);
+}
+
+.node-id {
+  font-weight: 600;
+}
+
+.last-check {
+  font-weight: 600;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+}
+
+.services__active-count {
+  font-weight: 600;
+  color: var(--default-green);
+}
+
+.services__inactive-count {
+  font-weight: 600;
+  color: var(--default-red);
+}

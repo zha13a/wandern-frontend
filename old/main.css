@@ -27,7 +27,6 @@ button, input[type="submit"], input[type="reset"] {
   --default-purple: #7A80F0;
   --transparent-purple: #7A80F050;
   --transparent-yellow: #F9CD7350;
-;
 
   background-color: var(--background-color);
   color: var(--foreground-color);

@@ -1,0 +1,22 @@
+.progress-ring {
+  fill: none;
+}
+
+.progress-ring__circle {
+  stroke: #7A80F0;
+  stroke-linecap: round;
+  stroke-dasharray: 188 188;
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+.percentage-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle-cell {
+  width: fit-content;
+}
