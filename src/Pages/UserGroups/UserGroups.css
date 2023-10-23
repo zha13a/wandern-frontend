@@ -118,3 +118,7 @@
   flex-direction: column;
   width: 100%;
 }
+
+.create-button {
+  background-color: var(--default-green);
+}

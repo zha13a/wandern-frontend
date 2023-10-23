@@ -65,7 +65,7 @@
   },
   "nodes": [
     {
-      "id": "node-123",
+      "id": "node-123aadsfas",
       "nodeIp": "178.12.35.1",
       "totalServices": 10,
       "activeServices": 8,
@@ -80,7 +80,7 @@
       }
     },
     {
-      "id": "node-123",
+      "id": "node-123dafsdfssss",
       "nodeIp": "178.12.35.1",
       "totalServices": 10,
       "activeServices": 8,
@@ -95,7 +95,7 @@
       }
     },
     {
-      "id": "node-123",
+      "id": "node-123ssss",
       "nodeIp": "178.12.35.1",
       "totalServices": 10,
       "activeServices": 8,
@@ -173,6 +173,80 @@
         "freeMemoryMB": 768,
         "totalThreads": 25
       }
+    }
+  ],
+  "groups": [
+    {
+      "name": "UserGroup1",
+      "id": "UserGroup1",
+      "nodes": [
+        {
+          "id": "node-123",
+          "nodeIp": "178.12.35.1",
+          "totalServices": 10,
+          "activeServices": 8,
+          "inactiveServices": 2,
+          "metrics": {
+            "timestamp": "2023-10-12T14:23:55Z",
+            "systemLoad": 50.2,
+            "jvmCpuLoad": 45.3,
+            "usedMemoryMB": 1024,
+            "freeMemoryMB": 3072,
+            "totalThreads": 100
+          }
+        },
+        {
+          "id": "node-123",
+          "nodeIp": "178.12.35.1",
+          "totalServices": 10,
+          "activeServices": 8,
+          "inactiveServices": 2,
+          "metrics": {
+            "timestamp": "2023-10-12T14:23:55Z",
+            "systemLoad": 50.2,
+            "jvmCpuLoad": 45.3,
+            "usedMemoryMB": 1024,
+            "freeMemoryMB": 3072,
+            "totalThreads": 100
+          }
+        }
+      ]
+    },
+    {
+      "name": "UserGroup2",
+      "id": "UserGroup2",
+      "nodes": [
+        {
+          "id": "ode-1SSSSSS3",
+          "nodeIp": "178.12.35.1",
+          "totalServices": 10,
+          "activeServices": 8,
+          "inactiveServices": 2,
+          "metrics": {
+            "timestamp": "2023-10-12T14:23:55Z",
+            "systemLoad": 50.2,
+            "jvmCpuLoad": 45.3,
+            "usedMemoryMB": 1024,
+            "freeMemoryMB": 3072,
+            "totalThreads": 100
+          }
+        },
+        {
+          "id": "asdfasdfdsf",
+          "nodeIp": "178.12.35.1",
+          "totalServices": 10,
+          "activeServices": 8,
+          "inactiveServices": 2,
+          "metrics": {
+            "timestamp": "2023-10-12T14:23:55Z",
+            "systemLoad": 50.2,
+            "jvmCpuLoad": 45.3,
+            "usedMemoryMB": 1024,
+            "freeMemoryMB": 3072,
+            "totalThreads": 100
+          }
+        }
+      ]
     }
   ]
 }

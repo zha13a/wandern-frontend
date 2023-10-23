@@ -1,92 +1,46 @@
 import React from "react";
+import { useEffect } from "react";
 
 import Table from "../../Components/Table/Table";
 
 import "./UserGroups.css";
 import Modal from "../../Components/Modal/Modal";
-
-const userGroupsData = [
-  {
-    name: "UserGroup1",
-    id: "UserGroup1",
-    nodes: [
-      {
-        NodeId: "node-1",
-        ip: "127.0.0.1",
-      },
-      {
-        NodeId: "node-2",
-        ip: "127.0.0.1",
-      },
-    ]
-  },
-  {
-    name: "UserGroup2",
-    id: "UserGroup2",
-    nodes: [
-      {
-        NodeId: "adfasdfssSSSS",
-        ip: "127.2.2.1",
-      },
-      {
-        NodeId: "node-4",
-        ip: "127.0.0.1",
-      },
-      {
-        NodeId: "123123",
-        ip: "127.0.0.1",
-      },
-    ]
-  },
-  {
-    name: "UserGroup3",
-    id: "UserGroup3",
-    nodes: [
-      {
-        NodeId: "node-5",
-        ip: "127.0.0.1",
-      },
-      {
-        NodeId: "node-6",
-        ip: "127.0.0.1",
-      },
-    ]
-  }
-];
-
-const allNodesData = [
-  {
-    NodeId: "node-1",
-    ip: "127.0.0.1",
-  },
-  {
-    NodeId: "node-2",
-    ip: "127.0.0.1",
-  },
-  {
-    NodeId: "node-3",
-    ip: "127.0.0.1",
-  },
-  {
-    NodeId: "node-4",
-    ip: "127.0.0.1",
-  },
-  {
-    NodeId: "node-5",
-    ip: "127.0.0.1",
-  }
-];
-
-
+import routes from "../../routes";
 
 const UserGroups = () => {
-  const [selectedGroup, setSelectedGroup] = React.useState(userGroupsData[0]);
+  const [selectedGroup, setSelectedGroup] = React.useState({});
+  const [selectedGroupIndex, setSelectedGroupIndex] = React.useState(0);
+  const [userGroupsData, setUserGroupsData] = React.useState([]);
+  const [allNodesData, setAllNodesData] = React.useState([]);
   const [selectedNewGroupNodes, setSelectedNewGroupNodes] = React.useState([]);
   const [isCreateGroupModalOpen, setIsCreateGroupModalOpen] = React.useState(false);
   const [isDeleteGroupModalOpen, setIsDeleteGroupModalOpen] = React.useState(false);
 
   const groupNameInputRef = React.useRef(null);
   const groupNameInputErrorRef = React.useRef(null);
+
+  const dataFetch = async () => {
+    try {
+      const response = await fetch(routes.groups);
+      setUserGroupsData(await response.json());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const dataFetchAllNodes = async () => {
+    try {
+      const response = await fetch(routes.nodes('all'));
+      setAllNodesData(await response.json());
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    dataFetch();
+    dataFetchAllNodes();
+  }, []);
 
   const toggleCreateGroupModal = () => {
     setIsCreateGroupModalOpen(!isCreateGroupModalOpen);
@@ -96,14 +50,16 @@ const UserGroups = () => {
     setIsDeleteGroupModalOpen(!isDeleteGroupModalOpen);
   }
 
-  const deleteGroup = () => {
-    // TODO: запрос на удаление
-    console.log(selectedGroup.id);
-    toggleDeleteGroupModal();
-  }
+  const deleteGroup = async () => {
+    // Запрос на удаление
+    try {
+      const response = await fetch(routes.deleteGroup(userGroupsData[selectedGroupIndex]?.id))
+      dataFetch();
+    } catch (error) {
+      console.log(error);
+    }
 
-  const selectGroup = (index) => {
-    setSelectedGroup(userGroupsData[index]);
+    toggleDeleteGroupModal();
   }
 
   const addNodesToGroup = (node) => {
@@ -116,11 +72,26 @@ const UserGroups = () => {
       setSelectedNewGroupNodes(selectedNewGroupNodes.filter((n) => n !== node));  
   }
 
-  const createGroup = (e) => {
+  const createGroup = async (e) => {
     e.preventDefault();
-    // TODO: запрос на создание
-    alert(selectedNewGroupNodes, groupNameInputRef.current.value);
     console.log(selectedNewGroupNodes, groupNameInputRef.current.value);
+
+    // Запрос на создание группы
+    try {
+      const response = await fetch(routes.createGroup, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          groupName: groupNameInputRef.current.value,
+          nodes: selectedNewGroupNodes
+        })
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
     toggleCreateGroupModal();
   }
 
@@ -135,8 +106,8 @@ const UserGroups = () => {
           <div className="user-groups">
             {userGroupsData.map((group, index) => (
               <div 
-                className={`user-groups__group ${userGroupsData[index].id === selectedGroup.id ? "user-groups__group_selected" : ""}`}
-                onClick={() => selectGroup(index)}
+                className={`user-groups__group ${index === selectedGroupIndex ? "user-groups__group_selected" : ""}`}
+                onClick={() => setSelectedGroupIndex(index)}
               >
                 {group.name}
               </div>
@@ -147,10 +118,10 @@ const UserGroups = () => {
             <button className="user-groups__action" onClick={toggleDeleteGroupModal}>&#10005; Delete User Group</button>
           </div>
           <Table additionalClasses={"table__user-groups"} colsCount={2} headers={["Node ID", "IP"]}>
-            {selectedGroup.nodes.map((node) => (
+            {userGroupsData[selectedGroupIndex]?.nodes.map((node) => (
               <>
-                <div className="table__cell">{node.NodeId}</div>
-                <div className="table__cell">{node.ip}</div>
+                <div className="table__cell">{node.id}</div>
+                <div className="table__cell">{node.nodeIp}</div>
               </>
             ))}
           </Table>
@@ -171,7 +142,7 @@ const UserGroups = () => {
                 if (!selectedNewGroupNodes.includes(node))
                   return (
                     <div className="user-groups__group" onClick={() => addNodesToGroup(node)}>
-                      {node.NodeId}
+                      {node.id}
                     </div>
                   );
               })}
@@ -180,12 +151,12 @@ const UserGroups = () => {
             <div className="create-group-modal__selected-nodes">
               {selectedNewGroupNodes.map((node) => (
                 <div className="user-groups__group" onClick={() => removeNodesFromGroup(node)}>
-                  {node.NodeId}
+                  {node.id}
                 </div>
               ))}
             </div>
           </div>
-          <button className="modal__accept-btn">
+          <button className="modal__accept-btn create-button">
             CREATE
           </button>
         </form>
@@ -193,7 +164,7 @@ const UserGroups = () => {
 
       <Modal isOpen={isDeleteGroupModalOpen} toggleFunction={toggleDeleteGroupModal}>
         <div className="modal__header">Are you sure you want to delete group?</div>
-        <div className="modal__service-name">{selectedGroup.id}</div>
+        <div className="modal__service-name">{userGroupsData[selectedGroupIndex]?.id}</div>
         <button className="modal__accept-btn" onClick={() => deleteGroup()}>
           YES, DELETE
         </button>
