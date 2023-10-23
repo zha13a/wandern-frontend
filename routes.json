@@ -1,0 +1,4 @@
+{
+  "/node/*": "/node",
+  "/nodes/*": "/nodes"
+}

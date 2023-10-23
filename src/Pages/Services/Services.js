@@ -1,67 +1,29 @@
 import React from "react";
+import { useEffect } from "react";
 import Table from "../../Components/Table/Table.js";
 import CircleBar from "../../Components/CircleBar/CircleBar.js";
 import Modal from "../../Components/Modal/Modal.js";
+import routes from "../../routes.js";
 
 import "./Services.css";
 
-const servicesData = [
-  {
-    "deploymentId": "ApiGWApplication-db07",
-    "deploymentUnit": "db07089ca1c6",
-    "system": "ApiGWApplication",
-    "serviceUrl": "http://127.0.1.1:8083",
-    "contextPath": "/",
-    "port": 8083,
-    "ip": "127.0.1.1",
-    "status": "UP",
-    "metrics": {
-      "systemLoad": 35.02,
-      "jvmCpuLoad": 0.02,
-      "usedMemoryMB": 35,
-      "freeMemoryMB": 3946,
-      "totalThreads": 27
-    }
-  },
-  {
-    "deploymentId": "MasterApplication-4a36",
-    "deploymentUnit": "4a3685c4d152",
-    "system": "MasterApplication",
-    "serviceUrl": "http://127.0.1.1:8080",
-    "contextPath": "/master",
-    "port": 8080,
-    "ip": "127.0.1.1",
-    "status": "DOWN",
-    "metrics": {
-      "systemLoad": 90.02,
-      "jvmCpuLoad": 0.11,
-      "usedMemoryMB": 43,
-      "freeMemoryMB": 3938,
-      "totalThreads": 31
-    }
-  },
-  {
-    "deploymentId": "mragent-03a9",
-    "deploymentUnit": "03a9af67a824",
-    "system": "AgentApplication",
-    "serviceUrl": "http://127.0.1.1:8081",
-    "contextPath": "/ctx",
-    "port": 8081,
-    "ip": "127.0.1.1",
-    "status": "UP",
-    "metrics": {
-      "systemLoad": 25.02,
-      "jvmCpuLoad": 10,
-      "usedMemoryMB": 26,
-      "freeMemoryMB": 3955,
-      "totalThreads": 33
-    }
-  }
-]
-
 const Services = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [servicesData, setServicesData] = React.useState([]);
   const [selectedServiceID, setSelectedServiceID] = React.useState(null);
+
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        const response = await fetch(routes.services);
+        setServicesData(await response.json());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    dataFetch();
+  }, []);
 
   const toggleModal = () => {
     isOpen && setSelectedServiceID(null);
@@ -94,10 +56,10 @@ const Services = () => {
                 </div>
               </div>
               <div className="table__cell">
-                <div>
+                {/* <div>
                   <span className="cell-label">URL: </span>
                   <span>{service.serviceUrl}</span>
-                </div>
+                </div> */}
                 <div>
                   <span className="cell-label">Context Path: </span>
                   <span>{service.contextPath}</span>
@@ -106,13 +68,13 @@ const Services = () => {
                   <span className="cell-label">Port: </span>
                   <span>{service.port}</span>
                 </div>
-                <div>
+                {/* <div>
                   <span className="cell-label">IP Address: </span>
                   <span>{service.ip}</span>
-                </div>
+                </div> */}
               </div>
               <div className="table__cell status-cell">
-                <div className="status-badge" status={service.status} onClick={() => {setSelectedServiceID(service.deploymentId); toggleModal()}}>{service.status}</div>
+                <div className="status-badge" status={service.healthCheck.status} onClick={() => {setSelectedServiceID(service.deploymentId); toggleModal()}}>{service.healthCheck.status}</div>
               </div>
               <CircleBar percentage={service.metrics.systemLoad} stroke="#7A80F0"/>
               <CircleBar percentage={service.metrics.jvmCpuLoad} stroke="#F9CD73"/>

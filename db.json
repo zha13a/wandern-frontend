@@ -1,0 +1,178 @@
+{
+  "node": {
+    "agnetId": "agent-001",
+    "node": {
+      "id": "node-123",
+      "nodeIp": "178.12.35.1",
+      "totalServices": 10,
+      "activeServices": 8,
+      "inactiveServices": 2,
+      "metrics": {
+        "timestamp": "2023-10-12T14:23:55Z",
+        "systemLoad": 50.2,
+        "jvmCpuLoad": 45.3,
+        "usedMemoryMB": 1024,
+        "freeMemoryMB": 3072,
+        "totalThreads": 100
+      }
+    },
+    "lastActive": "2023-10-12T14:23:55Z",
+    "agentVersion": "1.0.2",
+    "status": "active",
+    "services": [
+      {
+        "serviceId": "service-001",
+        "deploymentId": "ApiGWApplication-db07",
+        "deploymentUnit": "db07089ca1c6",
+        "system": "ApiGWApplication",
+        "contextPath": "/",
+        "port": 8083,
+        "healthCheck": {
+          "status": "UP",
+          "latency": "200ms",
+          "lastChecked": "2023-10-12T14:24:05Z"
+        },
+        "metrics": {
+          "timestamp": "2023-10-12T14:24:05Z",
+          "systemLoad": 30.5,
+          "jvmCpuLoad": 27.2,
+          "usedMemoryMB": 512,
+          "freeMemoryMB": 1536,
+          "totalThreads": 50
+        }
+      },
+      {
+        "serviceId": "service-002",
+        "deploymentId": "MasterApplication-4a36",
+        "deploymentUnit": "4a3685c4d152",
+        "system": "MasterApplication",
+        "contextPath": "/master",
+        "healthCheck": {
+          "status": "DOWN",
+          "latency": "500ms",
+          "lastChecked": "2023-10-12T14:24:10Z"
+        },
+        "metrics": {
+          "timestamp": "2023-10-12T14:24:10Z",
+          "systemLoad": 29.6,
+          "jvmCpuLoad": 28.1,
+          "usedMemoryMB": 256,
+          "freeMemoryMB": 768,
+          "totalThreads": 25
+        }
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "node-123",
+      "nodeIp": "178.12.35.1",
+      "totalServices": 10,
+      "activeServices": 8,
+      "inactiveServices": 2,
+      "metrics": {
+        "timestamp": "2023-10-12T14:23:55Z",
+        "systemLoad": 50.2,
+        "jvmCpuLoad": 45.3,
+        "usedMemoryMB": 1024,
+        "freeMemoryMB": 3072,
+        "totalThreads": 100
+      }
+    },
+    {
+      "id": "node-123",
+      "nodeIp": "178.12.35.1",
+      "totalServices": 10,
+      "activeServices": 8,
+      "inactiveServices": 2,
+      "metrics": {
+        "timestamp": "2023-10-12T14:23:55Z",
+        "systemLoad": 50.2,
+        "jvmCpuLoad": 45.3,
+        "usedMemoryMB": 1024,
+        "freeMemoryMB": 3072,
+        "totalThreads": 100
+      }
+    },
+    {
+      "id": "node-123",
+      "nodeIp": "178.12.35.1",
+      "totalServices": 10,
+      "activeServices": 8,
+      "inactiveServices": 2,
+      "metrics": {
+        "timestamp": "2023-10-12T14:23:55Z",
+        "systemLoad": 50.2,
+        "jvmCpuLoad": 45.3,
+        "usedMemoryMB": 1024,
+        "freeMemoryMB": 3072,
+        "totalThreads": 100
+      }
+    }
+  ],
+  "services": [
+    {
+      "serviceId": "service-001",
+      "deploymentId": "ApiGWApplication-db07",
+      "deploymentUnit": "db07089ca1c6",
+      "system": "ApiGWApplication",
+      "contextPath": "/",
+      "port": 8083,
+      "healthCheck": {
+        "status": "UP",
+        "latency": "200ms",
+        "lastChecked": "2023-10-12T14:24:05Z"
+      },
+      "metrics": {
+        "timestamp": "2023-10-12T14:24:05Z",
+        "systemLoad": 30.5,
+        "jvmCpuLoad": 27.2,
+        "usedMemoryMB": 512,
+        "freeMemoryMB": 1536,
+        "totalThreads": 50
+      }
+    },
+    {
+      "serviceId": "service-002",
+      "deploymentId": "MasterApplication-4a36",
+      "deploymentUnit": "4a3685c4d152",
+      "system": "MasterApplication",
+      "contextPath": "/master",
+      "port": 8080,
+      "healthCheck": {
+        "status": "DOWN",
+        "latency": "500ms",
+        "lastChecked": "2023-10-12T14:24:10Z"
+      },
+      "metrics": {
+        "timestamp": "2023-10-12T14:24:10Z",
+        "systemLoad": 29.6,
+        "jvmCpuLoad": 28.1,
+        "usedMemoryMB": 256,
+        "freeMemoryMB": 768,
+        "totalThreads": 25
+      }
+    },
+    {
+      "serviceId": "service-002",
+      "deploymentId": "MasterApplication-4a36",
+      "deploymentUnit": "4a3685c4d152",
+      "system": "MasterApplication",
+      "contextPath": "/master",
+      "port": 8080,
+      "healthCheck": {
+        "status": "UP",
+        "latency": "500ms",
+        "lastChecked": "2023-10-12T14:24:10Z"
+      },
+      "metrics": {
+        "timestamp": "2023-10-12T14:24:10Z",
+        "systemLoad": 29.6,
+        "jvmCpuLoad": 28.1,
+        "usedMemoryMB": 256,
+        "freeMemoryMB": 768,
+        "totalThreads": 25
+      }
+    }
+  ]
+}

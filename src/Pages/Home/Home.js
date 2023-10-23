@@ -19,27 +19,27 @@ const Home = () => {
         <div className="menu-button services-button" onClick={() => navigate("/services")}>
           <ServicesIcon className="menu-button__icon"/>
           <span className="menu-button__title">Services</span>
-          <span className="menu-button__count">14</span>
+          {/* <span className="menu-button__count">14</span> */}
         </div>
         <div className="menu-button groups-button" onClick={() => navigate("/groups")}>
           <GroupsIcon className="menu-button__icon "/>
           <span className="menu-button__title">GROUPS</span>
-          <span className="menu-button__count">88</span>
+          {/* <span className="menu-button__count">88</span> */}
         </div>
         <div className="menu-button all-nodes-button" onClick={() => navigate("/nodes/all")}>
           <ServerIcon className="menu-button__icon"/>
           <span className="menu-button__title">All nodes</span>
-          <span className="menu-button__count">14</span>
+          {/* <span className="menu-button__count">14</span> */}
         </div>
         <div className="menu-button failed-nodes-button" onClick={() => navigate("nodes/failed")}>
           <FailedNodesIcon className="menu-button__icon" />
           <span className="menu-button__title">Failed</span>
-          <span className="menu-button__count">69</span>
+          {/* <span className="menu-button__count">69</span> */}
         </div>
         <div className="menu-button ok-nodes-button" onClick={() => navigate("nodes/ok")}>
           <OkNodesIcon className="menu-button__icon "/>
           <span className="menu-button__title">OK</span>
-          <span className="menu-button__count">123</span>
+          {/* <span className="menu-button__count">123</span> */}
         </div>
       </div>
     </div>

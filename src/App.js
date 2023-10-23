@@ -8,6 +8,7 @@ import Services from "./Pages/Services/Services.js";
 import UserGroups from "./Pages/UserGroups/UserGroups.js";
 
 import "./App.css";
+import Breadcrumbs from "./Components/Breadcrumbs/Breadcrumbs.js";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: "/nodes/all",
+    path: "/nodes/:type",
     element: <Nodes />
   },
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
 
 const App = () => ( 
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 

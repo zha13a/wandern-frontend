@@ -1,7 +1,7 @@
-export default routes = {
-  // home: "/",
-  // nodesAll: "/nodes/all",
-  // nodesFailed: "/nodes/failed",
-  // node: (nodeID) => `/nodes/${nodeID}`,
-  // services: "/services"
+const routes = {
+  node: (nodeId) => `http://localhost:3000/node/${nodeId}`,
+  nodes: (type) => `http://localhost:3000/nodes/${type}`,
+  services: 'http://localhost:3000/services',
 }
+
+export default routes;

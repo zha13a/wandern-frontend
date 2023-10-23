@@ -1,38 +1,32 @@
 import React from "react";
+import { useEffect } from "react";
+import { useParams } from 'react-router-dom';
+
 import moment from "moment";
+import routes from "../../routes.js";
 import { useNavigate } from "react-router-dom";
 
 import Table from "../../Components/Table/Table.js";
 import "./Nodes.css";
 
-const rowsData = [
-  {
-    id: 'node-123',
-    nodeIp: "178.12.35.1",
-    timestamp: "2023-10-12T14:23:55Z",
-    totalServices: 10,
-    activeServices: 8,
-    inactiveServices: 2
-  },
-  {
-    id: 'node-123',
-    nodeIp: "178.12.35.1",
-    timestamp: "2023-10-21T14:23:55Z",
-    totalServices: 10,
-    activeServices: 8,
-    inactiveServices: 2
-  },
-  {
-    id: 'node-123',
-    nodeIp: "178.12.35.1",
-    timestamp: "2023-10-12T14:23:55Z",
-    totalServices: 10,
-    activeServices: 8,
-    inactiveServices: 2
-  },
-];
-
 const Nodes = () => {
+  const [nodesData, setNodesData] = React.useState([]);
+
+  let { type } = useParams();
+
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        const response = await fetch(routes.nodes(type));
+        setNodesData(await response.json());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    dataFetch();
+  }, []);
+
   const navigate = useNavigate();
 
   return (
@@ -41,14 +35,14 @@ const Nodes = () => {
       <span>Information about nodes</span>
 
       <Table colsCount={4} headers={["Node ID", "IP", "Last Check Time", "Services"]}>
-        {rowsData.map(row => (
+        {nodesData.map(node => (
           <>
-            <div className="table__cell node-id" onClick={() => {navigate(`/node/${row.id}`)}}>{row.id}</div>
-            <div className="table__cell">{row.nodeIp}</div>
-            <div className="table__cell last-check">{moment(row.timestamp).fromNow()}</div>
+            <div className="table__cell node-id" onClick={() => {navigate(`/node/${node.id}`)}}>{node.id}</div>
+            <div className="table__cell">{node.nodeIp}</div>
+            <div className="table__cell last-check">{moment(node.metrics.timestamp).fromNow()}</div>
             <div className="table__cell services">
-              <div><span className="services__active-count">{row.activeServices}</span> Active </div>
-              <div><span className="services__inactive-count">{row.inactiveServices}</span> Inactive</div>
+              <div><span className="services__active-count">{node.activeServices}</span> Active </div>
+              <div><span className="services__inactive-count">{node.inactiveServices}</span> Inactive</div>
             </div>
           </>
         ))}
