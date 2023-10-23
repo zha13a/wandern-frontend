@@ -248,5 +248,12 @@
         }
       ]
     }
-  ]
+  ],
+  "home": {
+    "services": 98,
+    "groups": 2,
+    "nodes": 100,
+    "failedNodes": 12,
+    "okNodes": 88
+  }
 }
