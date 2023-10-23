@@ -20,20 +20,20 @@ const NodeInformation = () => {
 
   let { nodeId } = useParams();
 
+  const dataFetch = async () => {
+    try {
+      const response = await fetch(routes.node(nodeId));
+      setNodeData(await response.json());
+    } catch (error) {
+      console.log(error);
+      setHasError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     setIsLoading(true);
-
-    const dataFetch = async () => {
-      try {
-        const response = await fetch(routes.node(nodeId));
-        setNodeData(await response.json());
-      } catch (error) {
-        console.log(error);
-        setHasError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
 
     dataFetch();
   }, []);
@@ -46,6 +46,7 @@ const NodeInformation = () => {
   const turnOffService = async (id) => {
     try {
       await fetch(routes.turnOffService(id));
+      dataFetch();
     } catch (error) {
       console.log(error);
     }

@@ -12,16 +12,16 @@ const Services = () => {
   const [servicesData, setServicesData] = React.useState([]);
   const [selectedServiceID, setSelectedServiceID] = React.useState(null);
 
-  useEffect(() => {
-    const dataFetch = async () => {
-      try {
-        const response = await fetch(routes.services);
-        setServicesData(await response.json());
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const dataFetch = async () => {
+    try {
+      const response = await fetch(routes.services);
+      setServicesData(await response.json());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  useEffect(() => {
     dataFetch();
   }, []);
 
@@ -33,6 +33,7 @@ const Services = () => {
   const turnOffService = async (id) => {
     try {
       await fetch(routes.turnOffService(id));
+      dataFetch();
     } catch (error) {
       console.log(error);
     }
