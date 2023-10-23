@@ -30,9 +30,12 @@ const Services = () => {
     setIsOpen(!isOpen);
   }
 
-  const turnOffService = (id) => {
-    // TODO: запрос на удаление
-    console.log(id);
+  const turnOffService = async (id) => {
+    try {
+      await fetch(routes.turnOffService(id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

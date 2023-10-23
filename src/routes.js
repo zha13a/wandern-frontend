@@ -4,7 +4,8 @@ const routes = {
   services: 'http://localhost:3000/services',
   groups: 'http://localhost:3000/groups',
   createGroup: 'http://localhost:3000/groups/create',
-  deleteGroup: (groupId) => `http://localhost:3000/groups/delete/${groupId}`
+  deleteGroup: (groupId) => `http://localhost:3000/groups/delete/${groupId}`,
+  turnOffService: (id) => `http://localhost:3000/services/toggle/${id}`
 }
 
 export default routes;
